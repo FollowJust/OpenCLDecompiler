@@ -220,8 +220,8 @@ class VAdd(BaseInstruction):
                     data_type = self.node.state[self.src1].data_type
             else:
                 #todo
-                expr_node = self.expression_manager.add_const_node(333, OpenCLTypes.UINT)
-                print("v_add: implement me")
+                expr_node = None# self.expression_manager.add_const_node(333, OpenCLTypes.UINT)
+                # print("v_add: implement me")
                 reg_type = RegisterType.INT32
                 if src0_reg:
                     reg_type = self.node.state[self.src0].type
@@ -234,7 +234,7 @@ class VAdd(BaseInstruction):
                 if src1_reg:
                     reg_type = self.node.state[self.src1].type
 
-            print("v_add::to_fill_node", "to_reg:", self.vdst, "new_value:", new_value)
+            # print("v_add::to_fill_node", "to_reg:", self.vdst, "new_value:", new_value)
             return set_reg_value(
                 self.node,
                 new_value,

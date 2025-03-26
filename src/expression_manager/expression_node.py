@@ -44,7 +44,7 @@ class ExpressionNode:
 
 def expression_to_string_helper(expression_node: ExpressionNode, need_cast: bool = False) -> str:
     if expression_node is None:
-        return ""
+        return "BROOO"
     
     match expression_node.type:
         case ExpressionType.OP:

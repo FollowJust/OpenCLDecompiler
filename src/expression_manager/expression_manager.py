@@ -18,7 +18,7 @@ class ExpressionManager(metaclass=Singleton):
         
         if node.value == 4:
             pass
-        print("add_node:", expression_to_string(node))
+        # print("add_node:", expression_to_string(node))
         self._nodes.append(node)
 
     def add_operation(self, s0: ExpressionNode, s1: ExpressionNode, op: ExpressionOperationType, value_type_hint: OpenCLTypes):        
@@ -31,7 +31,7 @@ class ExpressionManager(metaclass=Singleton):
         s1.parent = operation_node
 
         self.add_node(operation_node)
-        print("added operation:", expression_to_string(operation_node))
+        # print("added operation:", expression_to_string(operation_node))
         return operation_node
     
     def add_kernel_argument(self, arg: KernelArgument) -> ExpressionNode:
@@ -56,7 +56,7 @@ class ExpressionManager(metaclass=Singleton):
         else:
             new_node = self.add_const_node(value, OpenCLTypes.INT)
         
-        print("add_register_node:", reg_type, value, "node:", new_node.type, new_node.value_type_hint)
+        # print("add_register_node:", reg_type, value, "node:", new_node.type, new_node.value_type_hint)
         return new_node
     
     def add_const_node(self, value, value_type_hint : OpenCLTypes):

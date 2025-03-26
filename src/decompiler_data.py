@@ -39,7 +39,7 @@ def set_reg_value(  # noqa: PLR0913
 ):
     decompiler_data = DecompilerData()
     if register_content_type == RegisterContent:
-        print("set_reg_value:", to_reg, expression_to_string(expression_node))
+        # print("set_reg_value:", to_reg, expression_to_string(expression_node))
         node.state[to_reg] = Register(
             integrity=integrity,
             register_content=RegisterContent(

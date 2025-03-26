@@ -46,7 +46,7 @@ class SAdd(BaseInstruction):
                 )
 
             new_value = make_op(self.node, self.ssrc0, self.ssrc1, "+", "(ulong)", "(ulong)", suffix=self.suffix)
-            print("new value", new_value)
+            # print("new value", new_value)
             ssrc0_reg = is_sgpr(self.ssrc0)
             ssrc1_reg = is_sgpr(self.ssrc1)
             data_type = self.suffix
@@ -107,7 +107,6 @@ class SAdd(BaseInstruction):
                 else:
                     reg_type = RegisterType.UNKNOWN
             else:
-                assert(False)
                 reg_type = RegisterType.INT32
                 if ssrc0_reg:
                     reg_type = self.node.state[self.ssrc0].type
@@ -116,6 +115,7 @@ class SAdd(BaseInstruction):
                 if self.node.state[self.ssrc0].type == RegisterType.ADDRESS_KERNEL_ARGUMENT and self.node.state[
                     self.ssrc0
                 ].data_type in {"u32", "i32", "gi32", "gu32"}:
+                    assert(False)
                     new_value = make_op(self.node, self.ssrc1, "4", "/", suffix=self.suffix)
                     new_value = make_op(self.node, self.ssrc0, new_value, "+", suffix=self.suffix)
             if self.node.state[self.ssrc0].type == RegisterType.ADDRESS_KERNEL_ARGUMENT:
