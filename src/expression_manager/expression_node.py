@@ -143,15 +143,8 @@ class ExpressionNode:
         return self
 
     def replace(self, from_node: "ExpressionNode", to_node: "ExpressionNode") -> "ExpressionNode":
-        from src.expression_manager.expression_manager import ExpressionManager
         assert from_node is not None
         assert to_node is not None
-
-        print("self:", ExpressionManager().expression_to_string(self))
-        print("from_node:", ExpressionManager().expression_to_string(from_node))
-        print("to_node:", ExpressionManager().expression_to_string(to_node))
-        print("equal from", ExpressionManager().expression_to_string(self) == ExpressionManager().expression_to_string(from_node), self == from_node)
-        print("equal to", ExpressionManager().expression_to_string(self) == ExpressionManager().expression_to_string(to_node), self == to_node)
 
         if self == to_node:
             return self
@@ -180,40 +173,6 @@ class ExpressionNode:
                 self.right = self.right.replace(from_node, to_node)
 
         return self
-
-# def update_types(expression_node: ExpressionNode):
-#     if expression_node is None:
-#         return
-
-#     match expression_node.type:
-#         case ExpressionType.OP:
-#             update_types(expression_node.left)
-#             update_types(expression_node.right)
-#             expression_node.value_type_hint = get_common_type(expression_node.left.value_type_hint, expression_node.right.value_type_hint)
-#             return
-
-# def check_op_node_needs_cast(op_node: ExpressionNode) -> tuple[bool, bool]:
-#     assert(op_node.type == ExpressionType.OP)
-
-#     to_type = op_node.value_type_hint
-#     left_node: ExpressionNode = op_node.left
-
-#     match left_node.type:
-#         case ExpressionType.OP:
-#             left_child_needs_cast = check_op_node_needs_cast(left_node)
-#         case _:
-
-#     right_node: ExpressionNode = op_node.right
-
-#     left_node_needs_cast = True
-#     if left_node.type == ExpressionType.OP:
-#         left_node_needs_cast = check_nodes_need_cast_to(left_node)
-
-
-#     right_node_needs_cast = True
-
-#     return (check_nodes_need_cast_to(left_node, to_type), check_nodes_need_cast_to(right_node, to_type))
-
 
 # todo check with C99 standard
 def get_common_type(first: OpenCLTypes, second: OpenCLTypes) -> OpenCLTypes:

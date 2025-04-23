@@ -110,10 +110,7 @@ class FlatLoad(BaseInstruction):
                 data_type = self.node.state[self.from_registers].data_type
             #todo fix me
             if " + " in output_just_for_if:
-                print("bro, everything is fine")
-                print(output)
                 output_orig = make_elem_from_addr(output_just_for_if)
-                print(output_orig)
             elif self.node.state[self.start_to_registers].data_type != self.decompiler_data.names_of_vars[output][1:]:
                 assert(False)
                 output = f"*({make_opencl_type(self.decompiler_data.names_of_vars[output])}*)({output})"
